@@ -255,7 +255,7 @@ y_train<-y_true[discr_neg]
 qb_stats_sub_pred<-X[discr,]
 
 # Writing the data into csv files
-write.csv(qb_stats_sub_train,"/home/michal/python-codes/QBs-train.csv")
-write.csv(y_train,"/home/michal/python-codes/QBs-Y-train.csv")
-write.csv(qb_stats_sub_pred,"/home/michal/python-codes/QBs-pred.csv")
-write.csv(qbs_frame,"/home/michal/python-codes/QBs-names.csv")
+write.csv(qb_stats_sub_train,"QBs-train.csv")
+write.csv(y_train,"QBs-Y-train.csv")
+write.csv(qb_stats_sub_pred,"QBs-pred.csv")
+write.csv(qbs_frame,"QBs-names.csv")
