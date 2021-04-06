@@ -78,12 +78,24 @@ print(qb_df.columns)
 # Columns used in the analysis
 cols=['G', 'GS', 'QBrec', 'Cmp', 'Att', 'Cmp%', 'Yds', 'TD', 'TD%', 'Int','Int%', 'Lng', 'Y/A', 'AY/A', 'Y/C', 'Y/G', 'Rate', 'Sk', 'Yds.1','NY/A', 'ANY/A', 'Sk%', 'AV']
 
-# Known careers QBs (training set)
-X = np.asarray(qb_df[cols].fillna(0))
 # Career values of known careers (training set)
 y = np.asarray(qb_y_df['x'])
+
+# Next 6 lines quarantee that training and prediction sets are transformed with the same transormation
+# We first remove NaNs from the data and replace them with 0
+qb_df0 = qb_df[cols].fillna(0)
+qb_p_df0 = qb_p_df[cols].fillna(0)
+# Merging of training and prediction sets
+pre_norm = pd.concat([qb_df0,qb_p_df0])
+
+X_pre_norm = np.asarray(pre_norm)
+# Transformation
+X_after_norm = preprocessing.StandardScaler().fit(X_pre_norm).transform(X_pre_norm)
+
+# Known careers QBs (training set)
+X = X_after_norm[0:(qb_df0.shape[0])]
 # Prediction set QBs (uknown careers)
-X_p = np.asarray(qb_p_df[cols].fillna(0))
+X_p = X_after_norm[(qb_df0.shape[0]):(pre_norm.shape[0])]
 
 # Print out dimensions of X and y
 print ('X y shapes:', X.shape,  y.shape)
