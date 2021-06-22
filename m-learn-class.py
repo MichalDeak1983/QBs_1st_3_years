@@ -53,7 +53,7 @@ def plot_confusion_matrix(cm, classes,
 # Option to print out data frames
 pd.set_option('display.max_rows', 1000)
 
-# Loadinf data frames from csv files
+# Loading data frames from csv files
 qb_n_df = pd.read_csv("QBs-names.csv", index_col=0)
 qb_df = pd.read_csv("QBs-train.csv", index_col=0)
 qb_y_df = pd.read_csv("QBs-Y-train.csv", index_col=0)
