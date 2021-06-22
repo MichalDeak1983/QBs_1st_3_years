@@ -81,7 +81,7 @@ cols=['G', 'GS', 'QBrec', 'Cmp', 'Att', 'Cmp%', 'Yds', 'TD', 'TD%', 'Int','Int%'
 # Career values of known careers (training set)
 y = np.asarray(qb_y_df['x'])
 
-# Next 6 lines quarantee that training and prediction sets are transformed with the same transormation
+# Next 6 lines guarantee that training and prediction sets are transformed with the same transormation
 # We first remove NaNs from the data and replace them with 0
 qb_df0 = qb_df[cols].fillna(0)
 qb_p_df0 = qb_p_df[cols].fillna(0)
